@@ -1,0 +1,17 @@
+.customize-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .setting {
+    margin: 10px 0;
+  }
+  
+  label {
+    margin-right: 10px;
+  }
+  
+  select {
+    padding: 5px;
+  }
+  

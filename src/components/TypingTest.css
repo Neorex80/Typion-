@@ -1,0 +1,62 @@
+.typing-test-container {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+
+.text-to-type-container {
+  position: relative;
+}
+
+.text-to-type {
+  font-size: 25px;
+  user-select: none;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+
+.cursor {
+  position: absolute;
+  display: inline-block;
+  width: 2px;
+  height: 20px; 
+  animation: cursor-blink 1s infinite;
+}
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.author-container {
+  margin-top: 20px;
+}
+
+.author {
+  font-style: italic;
+}
+
+.reload-button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.reload-button:hover {
+  background-color: #0062cc;
+}
+

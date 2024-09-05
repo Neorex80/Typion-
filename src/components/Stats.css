@@ -1,0 +1,33 @@
+  
+  .stats, .advanced-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .stats p, .advanced-stats p {
+    margin: 5px 15px;
+    font-size: 16px;
+  }
+  
+  .stats p {
+    color: #666;
+  }
+  
+  .advanced-stats p {
+    color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .stats, .advanced-stats {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .stats p, .advanced-stats p {
+      margin: 5px 0;
+    }
+  }
+  
