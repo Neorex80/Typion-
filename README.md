@@ -1,5 +1,3 @@
----
-
 # Typion - Typing Test Platform
 
 **Typion** is a typing test platform built using **React** with **Vite**. The app allows users to test their typing speed and accuracy using random quotes or longer paragraphs. It also provides statistics such as words per minute (WPM), accuracy, error rate, and adjusted speed. The application supports theme switching and custom styling.
@@ -79,5 +77,3 @@
 ## License
 
 This project is open-source and available under the [MIT License](LICENSE).
-
----
