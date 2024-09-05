@@ -4,6 +4,7 @@ import quoteslarge from "./quoteslarge.json"; // Import larger paragraphs
 import Stats from "./Stats"; // Import the Stats component
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 import "./TypingTest.css";
+import { IoReloadCircle } from "react-icons/io5";
 
 const TypingTest = () => {
   const [text, setText] = useState("Loading...");
@@ -163,11 +164,9 @@ const TypingTest = () => {
       </div>
       <div className="author-container">
         <p className="author">- {author}</p>
-        <button className="reload-button" onClick={fetchRandomText}>
-          ↻
-        </button>
+        <IoReloadCircle className="reload-button" onClick={fetchRandomText} />
         <button className="toggle-text-button" onClick={() => setUseLargeText(!useLargeText)}>
-          {useLargeText ? "Switch to Quotes" : "Switch to Paragraphs"}
+          {useLargeText ? "Quotes" : "Paragraphs"}
         </button>
       </div>
 

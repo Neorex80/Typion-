@@ -50,13 +50,25 @@
   font-style: italic;
 }
 
-.reload-button {
-  border: none;
-  padding: 10px 20px;
+@mixin toggle-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
   border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &.active {
+    background-color: #007bff;
+    color: #fff;
+  }
 }
 
-.reload-button:hover {
-  background-color: #0062cc;
+.toggle-text-button {
+  @include toggle-button;
 }
 

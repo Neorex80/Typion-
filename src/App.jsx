@@ -1,9 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importing routing components
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import TypingTest from './components/TypingTest';
 import ThemeSwitcher from './components/ThemeSwitcher';
-import ResultsPage from './components/ResultsPage'; // Import the ResultsPage component
-import './App.css'; // Add general styles for your app
+import ResultsPage from './components/ResultsPage'; 
+import Footer from './components/Footer';
+import './App.css'; 
+
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
             <Route path="/results" element={<ResultsPage />} /> {/* Results page */}
           </Routes>
         </div>
+        <Footer /> {/* Footer */}
       </div>
     </Router>
   );
