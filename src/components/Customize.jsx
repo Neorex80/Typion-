@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import './Customize.css'; // Import your CSS file
 
 const Customize = () => {

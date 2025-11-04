@@ -1,4 +1,3 @@
-import React from 'react';
 import './Stats.css';
 
 const Stats = ({ wpm, accuracy, errors, errorRate, keystrokeEfficiency, adjustedSpeed }) => {

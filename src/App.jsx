@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import TypingTest from './components/TypingTest';
 import ThemeSwitcher from './components/ThemeSwitcher';

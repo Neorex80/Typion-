@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import quotes from "./quotes.json"; // Import the quotes from the JSON file
 import quoteslarge from "./quoteslarge.json"; // Import larger paragraphs
 import Stats from "./Stats"; // Import the Stats component
@@ -14,18 +14,16 @@ const TypingTest = () => {
   const [startTime, setStartTime] = useState(null);
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(100);
-  const [progress, setProgress] = useState(0);
   const [errorRate, setErrorRate] = useState(0);
   const [keystrokeEfficiency, setKeystrokeEfficiency] = useState(100);
   const [adjustedSpeed, setAdjustedSpeed] = useState(0);
-  const [isTestComplete, setIsTestComplete] = useState(false);
   const [useLargeText, setUseLargeText] = useState(false); // New state for toggling between quotes and paragraphs
 
   const textRef = useRef(null);
   const cursorRef = useRef(null);
   const navigate = useNavigate(); // For redirection
 
-  const fetchRandomText = () => {
+  const fetchRandomText = useCallback(() => {
     const source = useLargeText ? quoteslarge : quotes; // Decide which source to use
     const randomText = source[Math.floor(Math.random() * source.length)];
     setText(randomText.pl || randomText.q); // Use the paragraph or quote
@@ -35,16 +33,14 @@ const TypingTest = () => {
     setStartTime(null);
     setWpm(0);
     setAccuracy(100);
-    setProgress(0);
     setErrorRate(0);
     setKeystrokeEfficiency(100);
     setAdjustedSpeed(0);
-    setIsTestComplete(false);
-  };
+  }, [useLargeText]);
 
   useEffect(() => {
     fetchRandomText();
-  }, [useLargeText]); // Re-fetch text when switching between quotes and paragraphs
+  }, [fetchRandomText]); // Re-fetch text when switching between quotes and paragraphs
 
   useEffect(() => {
     if (userInput.length === 0) return;
@@ -84,15 +80,11 @@ const TypingTest = () => {
     const correctChars = userInput.length - errorCount;
     setAccuracy(userInput.length > 0 ? Math.round((correctChars / userInput.length) * 100) : 100);
 
-    const progressPercentage = Math.round((userInput.length / text.length) * 100);
-    setProgress(progressPercentage);
-
     // Check if typing is complete
     if (userInput === text) {
-      setIsTestComplete(true);
       handleTestComplete();
     }
-  }, [userInput, text, startTime]);
+  }, [userInput, text, startTime, handleTestComplete]);
 
   const handleKeyPress = (e) => {
     if (!startTime) setStartTime(Date.now());
@@ -112,7 +104,6 @@ const TypingTest = () => {
 
   useEffect(() => {
     if (cursorRef.current) {
-      const textArray = text.split("");
       const userInputArray = userInput.split("");
       const cursorIndex = userInputArray.length;
       const textSpan = textRef.current.children[cursorIndex];
@@ -124,7 +115,7 @@ const TypingTest = () => {
   }, [userInput, text]);
 
   // Handle test completion and redirect to ResultsPage
-  const handleTestComplete = () => {
+  const handleTestComplete = useCallback(() => {
     // Pass the result data via state
     navigate("/results", {
       state: {
@@ -139,7 +130,7 @@ const TypingTest = () => {
         author,
       },
     });
-  };
+  }, [navigate, userInput, text, errors, wpm, accuracy, errorRate, keystrokeEfficiency, adjustedSpeed, author]);
 
   return (
     <div className="typing-test-container">
